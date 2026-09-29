@@ -1,4 +1,4 @@
-# XR Walk
+# XR MAP
 
 地図・3D・AR・AIを組み合わせたXR街歩きアプリ。
 
