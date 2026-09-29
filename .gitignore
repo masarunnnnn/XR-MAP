@@ -6,6 +6,7 @@ dist-ssr/
 # 環境変数（APIキー等）
 .env
 .env.*
+!.env.example
 
 # ログ
 logs
