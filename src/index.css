@@ -5,3 +5,18 @@ body,
 #root {
   height: 100%;
 }
+
+.spot-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: 2px solid #ffffff;
+  background-color: #2563eb;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
+  cursor: pointer;
+  padding: 0;
+}
+
+.spot-marker:hover {
+  background-color: #1d4ed8;
+}
