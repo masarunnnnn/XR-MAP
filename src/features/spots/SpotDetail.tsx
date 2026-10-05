@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 import SpotMap from '@/features/map/SpotMap.tsx'
+import {
+  buildAppleMapsDirectionsUrl,
+  buildGoogleMapsDirectionsUrl,
+} from '@/features/location/directions.ts'
 import { formatDistance, getDistanceMeters } from '@/features/location/distance.ts'
 import { useCurrentPosition } from '@/features/location/useCurrentPosition.ts'
 import type { Spot } from './types.ts'
@@ -16,6 +20,9 @@ function SpotDetail({ spot, prevSpot, nextSpot }: SpotDetailProps) {
     position != null
       ? getDistanceMeters(position, { latitude: spot.latitude, longitude: spot.longitude })
       : null
+  const destination = { latitude: spot.latitude, longitude: spot.longitude, name: spot.name }
+  const googleMapsUrl = buildGoogleMapsDirectionsUrl(destination, position)
+  const appleMapsUrl = buildAppleMapsDirectionsUrl(destination, position)
 
   return (
     <div className="flex h-full flex-col">
@@ -38,6 +45,24 @@ function SpotDetail({ spot, prevSpot, nextSpot }: SpotDetailProps) {
           </p>
         )}
         <p className="mt-3 text-sm leading-6">{spot.description}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+          >
+            Googleマップで経路
+          </a>
+          <a
+            href={appleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+          >
+            Appleマップで経路
+          </a>
+        </div>
         <p className="mt-3 text-xs text-slate-500">
           緯度 {spot.latitude} / 経度 {spot.longitude}
         </p>
