@@ -10,7 +10,7 @@ type SpotMapProps = {
   className?: string
 }
 
-const DEFAULT_STYLE_URL = 'https://demotiles.maplibre.org/style.json'
+const DEFAULT_STYLE_URL = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 const DEFAULT_CENTER: [number, number] = [139.703, 35.6895]
 
 function SpotMap({ spots, selectedSpotId, className }: SpotMapProps) {
