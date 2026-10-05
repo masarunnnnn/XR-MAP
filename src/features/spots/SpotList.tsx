@@ -8,6 +8,10 @@ type SpotListProps = {
 }
 
 function SpotList({ spots, selectedSpotId, onSelect }: SpotListProps) {
+  if (spots.length === 0) {
+    return <p className="px-4 py-6 text-sm text-slate-500">条件に合うスポットがありません。</p>
+  }
+
   return (
     <ul className="divide-y divide-slate-200">
       {spots.map((spot) => {
