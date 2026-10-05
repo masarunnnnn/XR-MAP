@@ -33,6 +33,15 @@ function SpotMap({ spots, className }: SpotMapProps) {
     mapRef.current = map
 
     map.addControl(new maplibregl.NavigationControl(), 'top-right')
+    map.addControl(
+      new maplibregl.GeolocateControl({
+        positionOptions: { enableHighAccuracy: true },
+        trackUserLocation: true,
+        showUserLocation: true,
+        showAccuracyCircle: true,
+      }),
+      'top-right'
+    )
 
     return () => {
       map.remove()
